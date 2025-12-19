@@ -42,10 +42,10 @@ class SksLimitRule(IValidationRule):
             bool: Hasil validasi SKS.
         """
         if student["sks"] > 24:
-            logging.WARNING("Validasi SKS gagal: SKS melebihi batas.")
+            logging.warning("Validasi SKS gagal: SKS melebihi batas.")
             return False
 
-        logging.INFO("Validasi SKS berhasil.")
+        logging.info("Validasi SKS berhasil.")
         return True
 
 
@@ -65,10 +65,10 @@ class PrasyaratRule(IValidationRule):
             bool: Hasil validasi prasyarat.
         """
         if not student["prasyarat_lulus"]:
-            logging.WARNING("Validasi prasyarat gagal: Prasyarat belum lulus.")
+            logging.warning("Validasi prasyarat gagal: Prasyarat belum lulus.")
             return False
 
-        logging.INFO("Validasi prasyarat berhasil.")
+        logging.info("Validasi prasyarat berhasil.")
         return True
 
 # SERVICE REGISTRASI
@@ -96,14 +96,14 @@ class RegistrationService:
         Returns:
             bool: True jika registrasi berhasil, False jika gagal.
         """
-        logging.INFO("Memulai proses registrasi mahasiswa.")
+        logging.info("Memulai proses registrasi mahasiswa.")
 
         for rule in self.rules:
             if not rule.validate(student):
-                logging.WARNING("Registrasi mahasiswa gagal.")
+                logging.warning("Registrasi mahasiswa gagal.")
                 return False
 
-        logging.INFO("Registrasi mahasiswa berhasil.")
+        logging.info("Registrasi mahasiswa berhasil.")
         return True
 
 # PROGRAM UTAMA
